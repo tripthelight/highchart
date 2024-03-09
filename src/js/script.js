@@ -2,6 +2,18 @@ const CHART = Highcharts.chart("container", {
   chart: {
     type: "column",
   },
+  title: {
+    text: "",
+    style: {
+      display: "none",
+    },
+  },
+  subtitle: {
+    text: "",
+    style: {
+      display: "none",
+    },
+  },
   xAxis: {
     categories: ["USA", "China", "Brazil", "EU", "India", "Russia"],
     crosshair: false,
@@ -26,15 +38,20 @@ const CHART = Highcharts.chart("container", {
   tooltip: {
     valueSuffix: "",
     formatter: function () {
-      return this.key + " : " + this.y;
+      // return this.key + " : " + this.y;
+      return `<div class="tooltip">${this.key} : ${this.y}</div>`;
     },
+    shadow: false,
     positioner: function (labelWidth, labelHeight, point) {
       let tooltipX = point.plotX + this.chart.plotLeft - labelWidth / 2;
-      let tooltipY = point.plotY;
+      let tooltipY = point.plotY - 35;
       return {
         x: tooltipX,
         y: tooltipY,
       };
+    },
+    style: {
+      boxShadow: "none",
     },
   },
   colors: ["#FF0000", "#FFF000", "#FF00FF", "#00FFFF", "#24CBE5", "#64E572"],
