@@ -4,3 +4,9 @@
   box-shadow: none;
   border: 1px solid #ff0000;
 }
+
+.pie-chart_tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
